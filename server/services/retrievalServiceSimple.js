@@ -1,11 +1,11 @@
-import { generateEmbedding, cosineSimilarity } from '../utils/embeddings.js';
+import { generateMockEmbedding, cosineSimilarity } from '../utils/embeddingsMock.js';
 import storageDb from '../storage.js';
 
 const { storage } = storageDb;
 
 export async function vectorSearch(queryText, topK = 5, filters = {}) {
   try {
-    const queryEmbedding = await generateEmbedding(queryText);
+    const queryEmbedding = generateMockEmbedding(queryText);
 
     let results = storage.chunks.map(chunk => {
       const doc = storage.documents.find(d => d.id === chunk.document_id);

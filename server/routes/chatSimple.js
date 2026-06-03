@@ -1,5 +1,5 @@
 import express from 'express';
-import { answerQuestion, logFeedback } from '../services/ragServiceSimple.js';
+import { answerQuestion, logFeedback } from '../services/ragServiceDemo.js';
 
 const router = express.Router();
 

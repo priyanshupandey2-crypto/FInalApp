@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { extractDocumentText } from '../utils/pdfParser.js';
 import { semanticChunking, fixedSizeChunking, paragraphAwareChunking } from '../utils/chunkingStrategies.js';
-import { generateEmbedding } from '../utils/embeddings.js';
+import { generateMockEmbedding } from '../utils/embeddingsMock.js';
 import storageDb from '../storage.js';
 import fs from 'fs/promises';
 import path from 'path';
@@ -77,9 +77,9 @@ export async function ingestDocument(file, metadata = {}) {
         created_at: new Date().toISOString()
       });
 
-      // Generate embedding
+      // Generate embedding (using mock for demo mode)
       try {
-        const embedding = await generateEmbedding(chunk.content);
+        const embedding = generateMockEmbedding(chunk.content);
         storage.embeddings[chunkId] = embedding;
       } catch (error) {
         console.error(`Error generating embedding for chunk ${i}:`, error);

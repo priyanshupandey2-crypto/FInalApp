@@ -1,7 +1,10 @@
 import { OpenAI } from 'openai';
+import dotenv from 'dotenv';
 import { hybridSearch } from './retrievalServiceSimple.js';
 import storageDb from '../storage.js';
 import crypto from 'crypto';
+
+dotenv.config();
 
 const { storage, saveData } = storageDb;
 
